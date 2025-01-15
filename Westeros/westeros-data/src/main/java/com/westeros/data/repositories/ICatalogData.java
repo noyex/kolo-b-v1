@@ -8,5 +8,6 @@ public interface ICatalogData {
     CountryRepository getCountries();
     GenreRepository getGenres();
     LanguageRepository getLanguages();
+    PictureRepository getPictures();
 
 }

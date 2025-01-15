@@ -26,4 +26,9 @@ public class MoviesClientConfig {
     public MoviesPicturesClient moviesPicturesClient(IMoviesClientUriBuilderProvider uriBuilderProvider) {
         return new MoviesPicturesClient(uriBuilderProvider);
     }
+    @Bean
+    @Scope("prototype")
+    public MoviesDictionariesClient moviesDictionariesClient(IMoviesClientUriBuilderProvider uriBuilderProvider) {
+        return new MoviesDictionariesClient(uriBuilderProvider);
+    }
 }

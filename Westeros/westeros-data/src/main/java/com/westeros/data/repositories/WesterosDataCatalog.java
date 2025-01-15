@@ -12,9 +12,10 @@ public class WesterosDataCatalog implements ICatalogData {
     private final CountryRepository countries;
     private final GenreRepository genres;
     private final LanguageRepository languages;
+    private final PictureRepository pictures;
 
 
-    public WesterosDataCatalog(CompanyRepository companies, MoviesRepository movies, ActorRepository actors, CharacterRepository character, CountryRepository countries, GenreRepository genres, LanguageRepository languages) {
+    public WesterosDataCatalog(CompanyRepository companies, MoviesRepository movies, ActorRepository actors, CharacterRepository character, CountryRepository countries, GenreRepository genres, LanguageRepository languages, PictureRepository pictures) {
         this.companies = companies;
         this.movies = movies;
         this.actors = actors;
@@ -22,6 +23,7 @@ public class WesterosDataCatalog implements ICatalogData {
         this.countries = countries;
         this.genres = genres;
         this.languages = languages;
+        this.pictures = pictures;
     }
 
     public ActorRepository getActors() {
@@ -42,6 +44,11 @@ public class WesterosDataCatalog implements ICatalogData {
 
     public LanguageRepository getLanguages() {
         return languages;
+    }
+
+    @Override
+    public PictureRepository getPictures() {
+        return pictures;
     }
 
     @Override

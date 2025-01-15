@@ -1,8 +1,10 @@
 package com.westeros.webapi.services.mappers;
 
 import com.westeros.data.model.Movie;
+import com.westeros.data.model.Picture;
 import com.westeros.webapi.contract.MovieDto;
 import com.westeros.webapi.contract.MovieSummaryDto;
+import com.westeros.webapi.contract.PictureDto;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -49,5 +51,35 @@ class MovieDtoMapper implements IMap<Movie, MovieDto>{
         dto.setRuntime(movie.getRuntime());
         dto.setBudget(movie.getBudget());
         return dto;
+    }
+}
+
+@Component
+class PictureToDtoMapper implements IMap<Picture, PictureDto>{
+    @Override
+    public PictureDto map(Picture picture) {
+        var dto = new PictureDto();
+        dto.setId(picture.getId());
+        dto.setHeight(picture.getHeight());
+        dto.setWidth(picture.getWidth());
+        dto.setFilePath(picture.getFilePath());
+        dto.setVoteCount(picture.getVoteCount());
+        dto.setVoteAverage(picture.getVoteAverage());
+        return dto;
+    }
+}
+
+@Component
+class PictureDtoToEntityMapper implements IMap<PictureDto, Picture>{
+    @Override
+    public Picture map(PictureDto dto) {
+        var picture = new Picture();
+        picture.setId(dto.getId());
+        picture.setHeight(dto.getHeight());
+        picture.setWidth(dto.getWidth());
+        picture.setFilePath(dto.getFilePath());
+        picture.setVoteCount(dto.getVoteCount());
+        picture.setVoteAverage(dto.getVoteAverage());
+        return picture;
     }
 }
