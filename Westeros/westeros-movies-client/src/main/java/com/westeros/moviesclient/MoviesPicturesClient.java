@@ -24,7 +24,6 @@ public class MoviesPicturesClient implements IMoviesPicturesClient{
                 .pathSegment("movie", movieId+"", "images")
                 .build()
                 .toUriString();
-        System.out.println(url);
         return restClient.getForObject(url, PicturesResponseDto.class).backdrops();
     }
 }

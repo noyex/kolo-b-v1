@@ -1,6 +1,8 @@
 package com.westeros;
 
 import com.westeros.movies.updater.IUpdateMovies;
+import com.westeros.movies.updater.IUpdatePictures;
+import com.westeros.movies.updater.PicturesUpdater;
 import com.westeros.moviesclient.IMoviesPicturesClient;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,11 +18,11 @@ import java.time.LocalDate;
 public class WesterosMoviesUpdaterApplication implements CommandLineRunner {
 
     private final IUpdateMovies updater;
-    private final IMoviesPicturesClient picturesClient;
+    private final IUpdatePictures picturesUpdater;
 
-    public WesterosMoviesUpdaterApplication(IUpdateMovies updater, IMoviesPicturesClient picturesClient) {
+    public WesterosMoviesUpdaterApplication(IUpdateMovies updater, PicturesUpdater picturesUpdater) {
         this.updater = updater;
-        this.picturesClient = picturesClient;
+        this.picturesUpdater = picturesUpdater;
     }
 
     public static void main(String[] args) {
@@ -30,6 +32,6 @@ public class WesterosMoviesUpdaterApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         updater.updateByDateRange(LocalDate.now().minusDays(1), LocalDate.now());
-        picturesClient.getPictures(106);
+        picturesUpdater.updatePictures();
     }
 }
